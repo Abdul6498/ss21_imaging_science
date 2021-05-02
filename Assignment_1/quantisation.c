@@ -185,6 +185,11 @@ n_1 = 0;
 /* compute interval size d */
 
 // INSERT CODE HERE
+if (q < 0 || q > 8){
+   printf("q must be in [0,8]");
+   return(0);
+}
+d = pow(2, 8-q);
 
 for (j=1; j<=ny; j++)
  for (i=1; i<=nx; i++)
@@ -202,7 +207,7 @@ for (j=1; j<=ny; j++)
     /* compute quantisation */
 
     // INSERT CODE HERE
-
+   f[i][j] = (floor(g[i][j] / d + n_1) + 1.0/2) * d;
  }
 
 
