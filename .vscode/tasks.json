@@ -8,7 +8,8 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lm"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -27,7 +28,8 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lm"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -45,6 +47,7 @@
             "args": [
                 "-g",
                 "${file}",
+                "-lm",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
@@ -82,10 +85,10 @@
             "command": "/usr/bin/gcc-7",
             "args": [
                 "-g",
-                "-lm",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-lm"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
