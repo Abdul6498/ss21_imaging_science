@@ -148,7 +148,6 @@ return;
 }
 
 /*--------------------------------------------------------------------------*/
-
 void gamma_correct
 
      (double  gamma,      /* gamma correction factor */
@@ -167,9 +166,8 @@ long  k;   /* loop variable */
 */
 for(k=0;k<256;k++)
 {
-	double x=k/255;
-	double y=1/gamma;
-	g[k]= 255 * pow(x,y);
+	g[k]= 255 * pow(k/255.0, 1/gamma);
+   printf("%f",g[k]);
 }
 return;
 }
