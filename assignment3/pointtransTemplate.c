@@ -126,9 +126,11 @@ double  factor;     /* time saver */
 */
 min= 0;
 max=255;
+float scale = (b - a) / 255;
+float offset = b;
 for(i=min;i<=max; i++)
 {
-  g[i]= a*i+b;
+  g[i]= scale*i + offset;
 }
 
 /* rescale */
@@ -167,7 +169,6 @@ long  k;   /* loop variable */
 for(k=0;k<256;k++)
 {
 	g[k]= 255 * pow(k/255.0, 1/gamma);
-   printf("%f",g[k]);
 }
 return;
 }
