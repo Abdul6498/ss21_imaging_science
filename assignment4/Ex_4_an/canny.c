@@ -414,19 +414,12 @@ void getderivatives
     float deri[3] = {-1.0/2, 0.0, 1.0/2}; // mirrored derivate kernel
     float bino[3] = {1.0/4, 2.0/4 , 1.0/4}; // (mirrored) binomial kernel
     int length = 3;
-    float *help_x;
-    float *help_y_1;
-    float *help_y_2;
     alloc_vector (&help_x, nx+2);
 
     // derivative convolution in the x direction for dx
     // binomial convolution in the x direction for dy
     for (j=1; j<=ny; j++)
     {
-        // copy into row vector
-        for(p=0; p<=nx+1; p++)
-            help_x[p] = u[p][j];
-
         // convolution along row (x-direction)
         for (p=1; p<=nx; p++)
         {
@@ -434,26 +427,16 @@ void getderivatives
             float sum_by = 0;
             for(int k=0; k<length; k++)
             {
-                sum_dx += help_x[p+k-1]*deri[k];
-                sum_by += help_x[p+k-1]*bino[k];
+                sum_dx += u[p+k-1][j]*deri[k];
+                sum_by += u[p+k-1][j]*bino[k];
             }
             dx[p][j] = sum_dx;
             dy[p][j] = sum_by;            
         }
     }
-    disalloc_vector (help_x, nx+2);
 
-    alloc_vector (&help_y_1, ny+2);
-    alloc_vector (&help_y_2, ny+2);
     for (i=1; i<=nx; i++)
     {
-        // copy column vector
-        for (p=0; p<=ny+1; p++)
-        {
-            help_y_1[p] = dx[i][p];
-            help_y_2[p] = dy[i][p];
-        }
-
         // convolution along column (y-direction)
         for (p=1; p<=ny; p++)
         {
@@ -461,15 +444,13 @@ void getderivatives
             float sum_dy = 0;            
             for(int k=0; k<length; k++)
             {
-                sum_bx += help_y_1[p+k-1]*bino[k];
-                sum_dy += help_y_2[p+k-1]*deri[k];
+                sum_bx += dx[i][p+k-1]*bino[k];
+                sum_dy += dx[i][p+k-1]*deri[k];
             }
             dx[i][p] = sum_bx;
             dy[i][p] = sum_dy;
         }
     }
-    disalloc_vector (help_y_1, ny+2);
-    disalloc_vector (help_y_2, ny+2);
 }
 
 
