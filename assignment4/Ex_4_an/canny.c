@@ -551,7 +551,7 @@ int main(int argc, char* argv[])
     else
     {
         printf("\nSyntax:   %s <input.pgm/.ppm> <output.pgm> sigma T1 T2\n",argv[0]);
-	printf("Note: T2 should be larger than T1! \n\n");
+	    printf("Note: T2 should be larger than T1! \n\n");
         exit(0);
     }
 

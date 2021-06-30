@@ -1,5 +1,5 @@
 REM canny <input.pgm> <output.pgm> sigma T1 T2
-canny objects.pgm objects_output.pgm 3 2 3
+canny objects.pgm objects_output.pgm 2 2 3
 objects_output.pgm
 
 canny pruebab1.pgm pruebab1_output.pgm 5 2 3
